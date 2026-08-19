@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="nn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>📖 GJESTEBOKA 📖 — RobJob Enterprises™</title>
+<style>
+  :root {
+    --flame1: #ff4d00;
+    --flame2: #ffa200;
+    --flame3: #ffe600;
+    --hotpink: #ff2ea8;
+    --lime: #7fff00;
+    --skyblue: #00e0ff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    color: #fff;
+    background-color: #05030f;
+    background-image:
+      radial-gradient(1px 1px at 13px 17px, #fff, transparent),
+      radial-gradient(1px 1px at 47px 63px, #9ff, transparent),
+      radial-gradient(2px 2px at 71px 29px, #ff9, transparent),
+      radial-gradient(1px 1px at 89px 82px, #f9f, transparent),
+      radial-gradient(1px 1px at 31px 91px, #fff, transparent);
+    background-size: 100px 100px;
+    overflow-x: hidden;
+    min-height: 100vh;
+    cursor: crosshair;
+  }
+
+  marquee { background: #1a0033; border-top: 3px ridge var(--hotpink); border-bottom: 3px ridge var(--hotpink); padding: 4px 0; font-size: 15px; color: var(--lime); }
+
+  .page { max-width: 700px; margin: 0 auto; padding: 18px 12px 60px; text-align: center; }
+
+  h1 {
+    font-size: clamp(34px, 8vw, 60px);
+    margin: 18px 0 4px;
+    letter-spacing: 2px;
+    background: linear-gradient(0deg, var(--flame1) 10%, var(--flame2) 45%, var(--flame3) 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(2px 2px 0 #800) drop-shadow(0 0 14px rgba(255, 100, 0, .8));
+    transform: rotate(-1.5deg);
+  }
+  .subtitle { font-size: 16px; color: var(--skyblue); text-shadow: 1px 1px 0 #005; }
+
+  .signbtn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: inherit;
+    font-size: 20px;
+    font-weight: bold;
+    color: #fff;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 #600;
+    background: linear-gradient(#ff9a3d, var(--flame1) 60%, #b32400);
+    border: 5px outset #ffb066;
+    border-radius: 10px;
+    padding: 10px 22px;
+    margin: 14px 0;
+  }
+  .signbtn:active { border-style: inset; }
+  .signbtn img { width: 34px; height: 34px; border-radius: 6px; border: 2px solid #fff3; }
+
+  .hint { font-size: 12px; color: #b9f; }
+
+  .entries { text-align: left; margin-top: 24px; }
+  .entry {
+    border: 4px ridge var(--hotpink);
+    background: rgba(26, 0, 51, .85);
+    margin: 0 0 18px;
+    padding: 0;
+    box-shadow: 6px 6px 0 rgba(255, 46, 168, .35);
+  }
+  .entry header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg, #33005c, #1a0033);
+    border-bottom: 2px ridge var(--hotpink);
+    padding: 6px 10px;
+  }
+  .entry header img { width: 36px; height: 36px; border: 2px outset #ffb066; image-rendering: pixelated; }
+  .entry header .who { color: var(--flame3); font-weight: bold; }
+  .entry header .when { margin-left: auto; font-family: "Courier New", monospace; font-size: 12px; color: var(--lime); }
+  .entry .msg { padding: 10px 14px; font-size: 15px; white-space: pre-wrap; word-break: break-word; }
+
+  .status {
+    border: 4px ridge var(--hotpink);
+    background: rgba(26, 0, 51, .85);
+    padding: 14px;
+    margin-top: 24px;
+    color: var(--flame3);
+  }
+
+  .footer { font-size: 12px; color: #b9f; margin-top: 30px; }
+  .footer a { color: var(--skyblue); }
+
+  .blink { animation: blink 1s steps(2, start) infinite; }
+  @keyframes blink { to { visibility: hidden; } }
+  @media (prefers-reduced-motion: reduce) { .blink { animation: none; } }
+</style>
+</head>
+<body>
+
+<marquee scrollamount="6">📖📖📖 GJESTEBOKA !!! 📖 Skriv namnet ditt i historia !!! 📖 Ver grei, mora mi les denne sida !!! 📖📖📖</marquee>
+
+<div class="page">
+  <h1>📖 GJESTEBOKA 📖</h1>
+  <p class="subtitle">Signer med GitHub-kontoen din — det mest år-2000 vi hadde.<br>
+  <span class="blink">Ny teknologi!!!</span></p>
+
+  <a class="signbtn" href="https://github.com/roberthorgen/unsubscribe/issues/1" target="_blank" rel="noopener">
+    <img src="robjob.png" alt="">✍️ SIGNER GJESTEBOKA
+  </a>
+  <p class="hint">(du hamnar på GitHub — skriv ein kommentar, så dukkar han opp her)</p>
+
+  <div class="entries" id="entries"></div>
+  <div class="status" id="status">⏳ Lastar innslag frå gjesteboka…</div>
+
+  <div class="footer">
+    <a href="index.html">← Tilbake til UNSUBSCRIBE-sida</a><br>
+    © 2000 RobJob Enterprises™ · Innslaga er GitHub-kommentarar på <a href="https://github.com/roberthorgen/unsubscribe/issues/1" target="_blank" rel="noopener">issue #1</a>
+  </div>
+</div>
+
+<script>
+  const API = 'https://api.github.com/repos/roberthorgen/unsubscribe/issues/1/comments?per_page=100';
+  const entries = document.getElementById('entries');
+  const status = document.getElementById('status');
+
+  fetch(API, { headers: { Accept: 'application/vnd.github+json' } })
+    .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
+    .then(comments => {
+      if (!comments.length) {
+        status.textContent = '📭 Ingen har signert enno. Ver den fyrste!!!';
+        return;
+      }
+      status.remove();
+      for (const c of comments.reverse()) {
+        const el = document.createElement('article');
+        el.className = 'entry';
+
+        const head = document.createElement('header');
+        const av = document.createElement('img');
+        av.src = c.user.avatar_url + '&s=72';
+        av.alt = '';
+        const who = document.createElement('span');
+        who.className = 'who';
+        who.textContent = '~*~ ' + c.user.login + ' ~*~';
+        const when = document.createElement('span');
+        when.className = 'when';
+        when.textContent = new Date(c.created_at).toLocaleString('nn-NO', { dateStyle: 'short', timeStyle: 'short' });
+        head.append(av, who, when);
+
+        const msg = document.createElement('div');
+        msg.className = 'msg';
+        msg.textContent = c.body; // rein tekst — aldri innerHTML på brukarinnhald
+
+        el.append(head, msg);
+        entries.append(el);
+      }
+    })
+    .catch(() => {
+      status.textContent = '💾 Klarte ikkje å laste gjesteboka. GitHub-API-et seier nei (prøv igjen om litt — kanskje for mange gjester på ein time).';
+    });
+</script>
+</body>
+</html>
