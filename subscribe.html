@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="nn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SUBSCRIBE!!! — RobJob Enterprises™</title>
+<style>
+  :root {
+    --flame1: #ff4d00;
+    --flame2: #ffa200;
+    --flame3: #ffe600;
+    --hotpink: #ff2ea8;
+    --lime: #7fff00;
+    --skyblue: #00e0ff;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: "Comic Sans MS", "Comic Sans", "Chalkboard SE", cursive;
+    color: #fff;
+    background-color: #05030f;
+    background-image:
+      radial-gradient(1px 1px at 13px 17px, #fff, transparent),
+      radial-gradient(1px 1px at 47px 63px, #9ff, transparent),
+      radial-gradient(2px 2px at 71px 29px, #ff9, transparent),
+      radial-gradient(1px 1px at 89px 82px, #f9f, transparent),
+      radial-gradient(1px 1px at 31px 91px, #fff, transparent);
+    background-size: 100px 100px;
+    overflow-x: hidden;
+    min-height: 100vh;
+    cursor: crosshair;
+  }
+
+  marquee { background: #1a0033; border-top: 3px ridge var(--hotpink); border-bottom: 3px ridge var(--hotpink); padding: 4px 0; font-size: 15px; color: var(--lime); }
+
+  .page { max-width: 700px; margin: 0 auto; padding: 18px 12px 140px; text-align: center; }
+
+  h1 {
+    font-size: clamp(38px, 9vw, 72px);
+    margin: 18px 0 4px;
+    letter-spacing: 2px;
+    background: linear-gradient(0deg, var(--flame1) 10%, var(--flame2) 45%, var(--flame3) 80%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(2px 2px 0 #800) drop-shadow(0 0 14px rgba(255, 100, 0, .8));
+    transform: rotate(2deg);
+  }
+  .subtitle { font-size: 17px; color: var(--skyblue); text-shadow: 1px 1px 0 #005; }
+  .subtitle b { color: #fff; }
+
+  .blink { animation: blink 1s steps(2, start) infinite; }
+  @keyframes blink { to { visibility: hidden; } }
+
+  .box {
+    border: 4px ridge var(--hotpink);
+    background: rgba(26, 0, 51, .85);
+    margin: 22px auto;
+    padding: 14px;
+    max-width: 560px;
+    box-shadow: 6px 6px 0 rgba(255, 46, 168, .35);
+  }
+
+  .construction {
+    font-weight: bold;
+    color: #000;
+    background: repeating-linear-gradient(45deg, #ffe600 0 16px, #111 16px 32px);
+    padding: 6px;
+    border: 3px outset #ffe600;
+    font-size: 14px;
+    text-shadow: 0 0 4px #ffe600;
+  }
+
+  .arena { position: relative; min-height: 200px; }
+
+  #sub {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    font-family: inherit;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 1px 1px 0 #060;
+    background: linear-gradient(#b6ff6b, #2fbf00 60%, #116600);
+    border: 5px outset #c8ff99;
+    border-radius: 10px;
+    padding: 14px 26px;
+    cursor: pointer;
+    z-index: 5;
+    touch-action: none;
+    transform-origin: center;
+  }
+  #sub.chasing { position: fixed; transition: transform .15s; }
+  #sub:active { border-style: inset; }
+  #sub:focus-visible { outline: 4px dashed var(--hotpink); outline-offset: 4px; }
+  #sub img { width: 44px; height: 44px; border-radius: 8px; border: 2px solid #fff3; }
+  #sub .fl { position: absolute; top: -22px; font-size: 26px; animation: flick .35s infinite alternate; pointer-events: none; }
+  #sub .fl:nth-child(1) { left: 8%; animation-delay: .05s; }
+  #sub .fl:nth-child(2) { left: 42%; animation-delay: .17s; }
+  #sub .fl:nth-child(3) { left: 76%; animation-delay: .29s; }
+  @keyframes flick { from { transform: scale(1) rotate(-6deg); } to { transform: scale(1.25) rotate(7deg); } }
+
+  #nope {
+    font-family: inherit;
+    font-size: 11px;
+    color: #887;
+    background: none;
+    border: 1px dotted #554;
+    padding: 2px 6px;
+    margin-top: 18px;
+    cursor: pointer;
+    z-index: 4;
+    touch-action: none;
+  }
+
+  #taunt { min-height: 30px; font-size: 19px; color: var(--flame3); text-shadow: 1px 1px 0 #700; margin-top: 16px; }
+
+  .subs { text-align: left; }
+  .subs h2 { font-size: 18px; margin: 0 0 8px; color: var(--lime); text-align: center; }
+  .subs ol { margin: 0; padding-left: 28px; font-size: 14px; max-height: 260px; overflow-y: auto; }
+  .subs li { padding: 2px 0; color: #fde; }
+  .subs li.new { animation: pop .6s; color: var(--flame3); }
+  @keyframes pop { from { transform: scale(1.4); background: var(--hotpink); } }
+  .subs .total { font-family: "Courier New", monospace; text-align: center; margin-top: 10px; color: var(--lime); }
+  .subs .total b { background: #000; border: 2px inset #444; padding: 2px 6px; letter-spacing: 3px; color: #f00; }
+
+  .flamerow { position: fixed; bottom: -6px; left: 0; right: 0; font-size: 34px; white-space: nowrap; pointer-events: none; z-index: 2; }
+  .flamerow span { display: inline-block; animation: flick .4s infinite alternate; }
+  .flamerow span:nth-child(2n) { animation-delay: .15s; }
+  .flamerow span:nth-child(3n) { animation-delay: .27s; }
+
+  .footer { font-size: 12px; color: #b9f; margin-top: 30px; }
+  .footer a { color: var(--skyblue); }
+
+  .trail { position: fixed; pointer-events: none; z-index: 9; font-size: 13px; animation: fadeout .7s forwards; }
+  @keyframes fadeout { to { opacity: 0; transform: translateY(-14px) scale(.4); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .blink, .fl, .flamerow span, .subs li.new { animation: none; }
+    .trail { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<marquee scrollamount="6">📨📨📨 Velkomen til den OFFISIELLE påmeldingssida !!! 📨 Du er allereie påmeld !!! 📨 Takk for at du vil ha MEIR nyheitsbrev !!! 📨📨📨</marquee>
+
+<div class="page">
+  <h1>SUBSCRIBE!!!</h1>
+  <p class="subtitle">Vil du ha nyheitsbrevet? <b>Fantastisk!</b><br>
+  Knappen kjem til deg. <span class="blink">Du treng ikkje gjere noko.</span></p>
+
+  <div class="box construction">🚧 UNDER KONSTRUKSJON SIDAN 1999 🚧</div>
+
+  <div class="arena">
+    <button id="sub" type="button">
+      <span class="fl">📨</span><span class="fl">📨</span><span class="fl">📨</span>
+      <img src="robjob.png" alt="RobJob-logoen">
+      SUBSCRIBE
+    </button>
+    <p id="taunt" aria-live="polite"></p>
+    <button id="nope" type="button">nei takk</button>
+  </div>
+
+  <div class="box subs">
+    <h2>📬 Dine abonnement 📬</h2>
+    <ol id="list"></ol>
+    <p class="total">Nyheitsbrev per veke: <b id="weekly">0007</b></p>
+  </div>
+
+  <div class="footer">
+    © 2000 RobJob Enterprises™ &nbsp;·&nbsp; <a href="gjestebok.html">Signer gjesteboka</a> &nbsp;·&nbsp; <a href="index.html">Meld deg av (lukke til)</a><br>
+    Webring: <a href="#" onclick="return false">← førre</a> · <a href="#" onclick="return false">tilfeldig</a> · <a href="#" onclick="return false">neste →</a><br>
+    Ved å besøke denne sida har du godteke vilkåra. Vilkåra er òg eit nyheitsbrev.
+  </div>
+</div>
+
+<div class="flamerow" aria-hidden="true"></div>
+
+<script>
+  const btn = document.getElementById('sub');
+  const nope = document.getElementById('nope');
+  const taunt = document.getElementById('taunt');
+  const list = document.getElementById('list');
+  const weekly = document.getElementById('weekly');
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const NEWSLETTERS = [
+    'RobJob Weekly™',
+    'RobJob Daily™',
+    'RobJob Hourly™',
+    'Robs kaffirapport ☕',
+    'Månadens beste screensaver',
+    'Faks-nyheiter (krev faks)',
+    'Kjedebrev: send vidare til 10 venner',
+    'Vêrmelding for i går',
+    'Gjestebok-digest',
+    'Nyheitsbrevet om nyheitsbrevet',
+    'Webring-oppdateringar',
+    'Tips & triks for Netscape Navigator',
+    'Dagens GIF 🌀',
+    'Kvartalsrapport om flammer 🔥',
+    'Påminning om å lese nyheitsbreva dine',
+    'Avmeldingsbekreftingar (du får ingen)',
+  ];
+
+  const TAUNTS = [
+    'Takk for påmeldinga!',
+    'Takk igjen!',
+    'Du er ein ekte fan.',
+    'Innboksen din jublar.',
+    'Rob seier ja!',
+    'Vi la til nokre ekstra, berre i tilfelle.',
+    'Er du sikker på at du ikkje vil ha fleire? Fiksa.',
+    'Du er no VIP-abonnent 💎',
+    'Spamfilteret ditt har gitt opp.',
+    'Det finst ingen veg tilbake.',
+  ];
+
+  let count = 0;
+  let clicks = 0;
+
+  function subscribe(quiet) {
+    const name = NEWSLETTERS[count % NEWSLETTERS.length] + (count >= NEWSLETTERS.length ? ` (kopi ${Math.floor(count / NEWSLETTERS.length) + 1})` : '');
+    count++;
+    list.querySelector('.new')?.classList.remove('new');
+    const li = document.createElement('li');
+    li.textContent = name;
+    li.className = 'new';
+    list.append(li);
+    list.scrollTop = list.scrollHeight;
+    weekly.textContent = String(7 * count * count).padStart(4, '0');
+    if (!quiet) {
+      clicks++;
+      taunt.textContent = TAUNTS[Math.min(clicks - 1, TAUNTS.length - 1)];
+      btn.style.transform = `scale(${Math.min(1 + clicks * 0.08, 2)})`;
+    }
+  }
+
+  // Du er allereie påmeld, sjølvsagt
+  subscribe(true);
+  subscribe(true);
+  subscribe(true);
+
+  // Kvar klikk, kor som helst, er ei påmelding (unntatt «nei takk», som du aldri treff)
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('a')) return;
+    subscribe(false);
+  });
+
+  // Knappen følgjer etter peikaren
+  let tx = 0, ty = 0, bx = 0, by = 0, chasing = false;
+  function startChase() {
+    if (chasing) return;
+    chasing = true;
+    const r = btn.getBoundingClientRect();
+    bx = r.left; by = r.top;
+    btn.classList.add('chasing');
+    btn.style.left = bx + 'px';
+    btn.style.top = by + 'px';
+    requestAnimationFrame(step);
+  }
+  function step() {
+    const r = btn.getBoundingClientRect();
+    const k = reduced ? 1 : 0.06;
+    bx += (tx - r.width / 2 - bx) * k;
+    by += (ty - r.height / 2 - by) * k;
+    btn.style.left = bx + 'px';
+    btn.style.top = by + 'px';
+    requestAnimationFrame(step);
+  }
+  document.addEventListener('pointermove', (e) => {
+    tx = e.clientX; ty = e.clientY;
+    if (performance.now() > 1500) startChase();
+  });
+  document.addEventListener('touchstart', (e) => {
+    tx = e.touches[0].clientX; ty = e.touches[0].clientY;
+    startChase();
+  }, { passive: true });
+
+  // «Nei takk» rømmer, akkurat som unsubscribe-knappen
+  function dodge() {
+    const r = nope.getBoundingClientRect();
+    nope.style.position = 'fixed';
+    nope.style.left = Math.max(10, Math.random() * (innerWidth - r.width - 10)) + 'px';
+    nope.style.top = Math.max(10, Math.random() * (innerHeight - r.height - 90)) + 'px';
+  }
+  document.addEventListener('pointermove', (e) => {
+    const r = nope.getBoundingClientRect();
+    if (Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2)) < 90) dodge();
+  });
+  nope.addEventListener('touchstart', (e) => { e.preventDefault(); dodge(); }, { passive: false });
+  nope.addEventListener('click', (e) => {
+    // Tastaturheltar som faktisk treff: dei får tre ekstra
+    e.stopPropagation();
+    subscribe(true); subscribe(true); subscribe(true);
+    taunt.textContent = 'Vi tolka «nei takk» som «ja, fleire takk».';
+  });
+
+  // Flammerad i botnen
+  document.querySelector('.flamerow').innerHTML = '<span>📨</span>'.repeat(Math.ceil(innerWidth / 34) + 2);
+
+  // Glitterspor etter peikaren
+  if (!reduced) {
+    let last = 0;
+    document.addEventListener('pointermove', (e) => {
+      const now = performance.now();
+      if (now - last < 60) return;
+      last = now;
+      const s = document.createElement('span');
+      s.className = 'trail';
+      s.textContent = ['✨', '💌', '📧'][Math.floor(Math.random() * 3)];
+      s.style.left = e.clientX + 6 + 'px';
+      s.style.top = e.clientY + 6 + 'px';
+      document.body.appendChild(s);
+      setTimeout(() => s.remove(), 700);
+    });
+  }
+</script>
+</body>
+</html>
